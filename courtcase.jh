@@ -1,0 +1,93 @@
+
+
+entity Case {
+	caseNo String
+    villageName String //गावाचे नाव 
+    accuserName String //वादीचे नाव 
+    applicationNo String //दरखास्त नंबर 
+    landReferenceNo String //भूसंदर्भ क्रं 
+    firstAppeal String //प्रथम अपिल 
+    amount String //रक्कम  
+    projectName String //प्रकल्पाचे नाव  
+    courtName String //न्यायालयाचे नाव 
+    defendantName String //प्रतिवादी 
+    caseDescription String //प्रकरणाचा संक्षिप्त तपशील 
+    caseFilingDate Instatnt // प्रकरण दाखल दिनांक 
+    totalClaimAmount String //दाव्याची एकूण रक्कम 
+    caseOfficer String //न्यायालयीन प्रकरणे हाताळणारे अधिकारी 
+    caselawyer String //न्यायालयीन प्रकरणे हाताळणारे वकील 
+    nextHearingDate Instant //पुढील सुनावणी दिनांक 
+    amountDepositeInCourt String //न्यायालयात जमा केलेल्या रक्कमा 
+    lar String //नयायलयीन याचिका क्रं 
+    increasedCompensationAmount String //वाढीव मोबदल्याची रक्कम 
+    amountPaidSLO String //SLO कडे भरावयाची रक्कम 
+    chequeNo String // धनादेश क्रं 
+    chequeDate Instant //धनादेश दिनांक 
+    appealNo String // अपिल क्रं 
+    courtAmount String //न्यायालयात भरणा करावयाची रक्कम 
+    appealAmount String // अपिलासाठी न्यायालयात जमा केलेली रक्कम 
+    appealDate Instant // अपिलासाठी न्यायालयात जमा केलेली दिनांक
+	description String
+	comment String //शेरा 
+	caseStatus String // प्रकरणाची सद्यस्तिथी 
+	freefield1 String
+	freefield2 String
+	freefield3 String
+	freefield4 String
+	freefield5 String
+    lastModifiedBy String
+    lastModified String
+}
+
+entity Hearing {
+	hearingDate Instant
+	nextHearingDate Instant
+	description String
+	previousHearingDate Instant
+	conclusion String
+	comment String
+	status String
+	freefield1 String
+	freefield2 String
+	freefield3 String
+	freefield4 String
+	freefield5 String
+    lastModifiedBy String
+    lastModified String
+}
+
+entity User {
+	firstname String
+    lastName String
+    contactNo String
+    emailId String
+    address String
+    userName String
+    password String
+    verifyPassword String
+    lastModifiedBy String
+    lastModified String
+    
+}
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Hearing to Case{hearing}
+    Case to User{case}
+	
+}
+
+
+// Set pagination options
+paginate Hearing, Case, User with infinite-scroll
+paginate Case with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
