@@ -1,0 +1,142 @@
+<div>
+  <h2 id="page-heading" data-cy="UserDataHeading">
+    <span jhiTranslate="courtcaseBackendApp.userData.home.title">User Data</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="courtcaseBackendApp.userData.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-user-data"
+        [routerLink]="['/user-data/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="courtcaseBackendApp.userData.home.createLabel"> Create a new User Data </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="userData?.length === 0">
+    <span jhiTranslate="courtcaseBackendApp.userData.home.notFound">No userData found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="userData && userData.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="firstname">
+            <span jhiTranslate="courtcaseBackendApp.userData.firstname">Firstname</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastName">
+            <span jhiTranslate="courtcaseBackendApp.userData.lastName">Last Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="contactNo">
+            <span jhiTranslate="courtcaseBackendApp.userData.contactNo">Contact No</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="emailId">
+            <span jhiTranslate="courtcaseBackendApp.userData.emailId">Email Id</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="address">
+            <span jhiTranslate="courtcaseBackendApp.userData.address">Address</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="userName">
+            <span jhiTranslate="courtcaseBackendApp.userData.userName">User Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="password">
+            <span jhiTranslate="courtcaseBackendApp.userData.password">Password</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="verifyPassword">
+            <span jhiTranslate="courtcaseBackendApp.userData.verifyPassword">Verify Password</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <span jhiTranslate="courtcaseBackendApp.userData.lastModifiedBy">Last Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModified">
+            <span jhiTranslate="courtcaseBackendApp.userData.lastModified">Last Modified</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="courtCase.id">
+            <span jhiTranslate="courtcaseBackendApp.userData.courtCase">Court Case</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userData of userData; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/user-data', userData.id, 'view']">{{ userData.id }}</a>
+          </td>
+          <td>{{ userData.firstname }}</td>
+          <td>{{ userData.lastName }}</td>
+          <td>{{ userData.contactNo }}</td>
+          <td>{{ userData.emailId }}</td>
+          <td>{{ userData.address }}</td>
+          <td>{{ userData.userName }}</td>
+          <td>{{ userData.password }}</td>
+          <td>{{ userData.verifyPassword }}</td>
+          <td>{{ userData.lastModifiedBy }}</td>
+          <td>{{ userData.lastModified }}</td>
+          <td>
+            <div *ngIf="userData.courtCase">
+              <a [routerLink]="['/court-case', userData.courtCase?.id, 'view']">{{ userData.courtCase?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/user-data', userData.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/user-data', userData.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(userData)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="userData && userData.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>
