@@ -1,0 +1,479 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-court-case-heading"
+        data-cy="CourtCaseCreateUpdateHeading"
+        jhiTranslate="courtcaseBackendApp.courtCase.home.createOrEditLabel"
+      >
+        Create or edit a Court Case
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.caseNo" for="field_caseNo">Case No</label>
+          <input type="text" class="form-control" name="caseNo" id="field_caseNo" data-cy="caseNo" formControlName="caseNo" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.villageName" for="field_villageName"
+            >Village Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="villageName"
+            id="field_villageName"
+            data-cy="villageName"
+            formControlName="villageName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.accuserName" for="field_accuserName"
+            >Accuser Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="accuserName"
+            id="field_accuserName"
+            data-cy="accuserName"
+            formControlName="accuserName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.applicationNo" for="field_applicationNo"
+            >Application No</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="applicationNo"
+            id="field_applicationNo"
+            data-cy="applicationNo"
+            formControlName="applicationNo"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.landReferenceNo" for="field_landReferenceNo"
+            >Land Reference No</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="landReferenceNo"
+            id="field_landReferenceNo"
+            data-cy="landReferenceNo"
+            formControlName="landReferenceNo"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.firstAppeal" for="field_firstAppeal"
+            >First Appeal</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="firstAppeal"
+            id="field_firstAppeal"
+            data-cy="firstAppeal"
+            formControlName="firstAppeal"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.amount" for="field_amount">Amount</label>
+          <input type="text" class="form-control" name="amount" id="field_amount" data-cy="amount" formControlName="amount" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.projectName" for="field_projectName"
+            >Project Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="projectName"
+            id="field_projectName"
+            data-cy="projectName"
+            formControlName="projectName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.courtName" for="field_courtName">Court Name</label>
+          <input type="text" class="form-control" name="courtName" id="field_courtName" data-cy="courtName" formControlName="courtName" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.defendantName" for="field_defendantName"
+            >Defendant Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="defendantName"
+            id="field_defendantName"
+            data-cy="defendantName"
+            formControlName="defendantName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.caseDescription" for="field_caseDescription"
+            >Case Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="caseDescription"
+            id="field_caseDescription"
+            data-cy="caseDescription"
+            formControlName="caseDescription"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.caseFilingDate" for="field_caseFilingDate"
+            >Case Filing Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_caseFilingDate"
+              data-cy="caseFilingDate"
+              type="datetime-local"
+              class="form-control"
+              name="caseFilingDate"
+              formControlName="caseFilingDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.totalClaimAmount" for="field_totalClaimAmount"
+            >Total Claim Amount</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="totalClaimAmount"
+            id="field_totalClaimAmount"
+            data-cy="totalClaimAmount"
+            formControlName="totalClaimAmount"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.caseOfficer" for="field_caseOfficer"
+            >Case Officer</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="caseOfficer"
+            id="field_caseOfficer"
+            data-cy="caseOfficer"
+            formControlName="caseOfficer"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.caselawyer" for="field_caselawyer"
+            >Caselawyer</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="caselawyer"
+            id="field_caselawyer"
+            data-cy="caselawyer"
+            formControlName="caselawyer"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.nextHearingDate" for="field_nextHearingDate"
+            >Next Hearing Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_nextHearingDate"
+              data-cy="nextHearingDate"
+              type="datetime-local"
+              class="form-control"
+              name="nextHearingDate"
+              formControlName="nextHearingDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="courtcaseBackendApp.courtCase.amountDepositeInCourt"
+            for="field_amountDepositeInCourt"
+            >Amount Deposite In Court</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="amountDepositeInCourt"
+            id="field_amountDepositeInCourt"
+            data-cy="amountDepositeInCourt"
+            formControlName="amountDepositeInCourt"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.lar" for="field_lar">Lar</label>
+          <input type="text" class="form-control" name="lar" id="field_lar" data-cy="lar" formControlName="lar" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.incCompensation" for="field_incCompensation"
+            >Inc Compensation</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="incCompensation"
+            id="field_incCompensation"
+            data-cy="incCompensation"
+            formControlName="incCompensation"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.amountPaidSLO" for="field_amountPaidSLO"
+            >Amount Paid SLO</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="amountPaidSLO"
+            id="field_amountPaidSLO"
+            data-cy="amountPaidSLO"
+            formControlName="amountPaidSLO"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.chequeNo" for="field_chequeNo">Cheque No</label>
+          <input type="text" class="form-control" name="chequeNo" id="field_chequeNo" data-cy="chequeNo" formControlName="chequeNo" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.chequeDate" for="field_chequeDate"
+            >Cheque Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_chequeDate"
+              data-cy="chequeDate"
+              type="datetime-local"
+              class="form-control"
+              name="chequeDate"
+              formControlName="chequeDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.appealNo" for="field_appealNo">Appeal No</label>
+          <input type="text" class="form-control" name="appealNo" id="field_appealNo" data-cy="appealNo" formControlName="appealNo" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.courtAmount" for="field_courtAmount"
+            >Court Amount</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="courtAmount"
+            id="field_courtAmount"
+            data-cy="courtAmount"
+            formControlName="courtAmount"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.appealAmount" for="field_appealAmount"
+            >Appeal Amount</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="appealAmount"
+            id="field_appealAmount"
+            data-cy="appealAmount"
+            formControlName="appealAmount"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.appealDate" for="field_appealDate"
+            >Appeal Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_appealDate"
+              data-cy="appealDate"
+              type="datetime-local"
+              class="form-control"
+              name="appealDate"
+              formControlName="appealDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.description" for="field_description"
+            >Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.comment" for="field_comment">Comment</label>
+          <input type="text" class="form-control" name="comment" id="field_comment" data-cy="comment" formControlName="comment" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.caseStatus" for="field_caseStatus"
+            >Case Status</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="caseStatus"
+            id="field_caseStatus"
+            data-cy="caseStatus"
+            formControlName="caseStatus"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.freefield1" for="field_freefield1"
+            >Freefield 1</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="freefield1"
+            id="field_freefield1"
+            data-cy="freefield1"
+            formControlName="freefield1"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.freefield2" for="field_freefield2"
+            >Freefield 2</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="freefield2"
+            id="field_freefield2"
+            data-cy="freefield2"
+            formControlName="freefield2"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.freefield3" for="field_freefield3"
+            >Freefield 3</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="freefield3"
+            id="field_freefield3"
+            data-cy="freefield3"
+            formControlName="freefield3"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.lastModifiedBy" for="field_lastModifiedBy"
+            >Last Modified By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.lastModified" for="field_lastModified"
+            >Last Modified</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModified"
+            id="field_lastModified"
+            data-cy="lastModified"
+            formControlName="lastModified"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.courtCase.hearing" for="field_hearing">Hearing</label>
+          <select class="form-control" id="field_hearing" data-cy="hearing" name="hearing" formControlName="hearing">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="hearingOption.id === editForm.get('hearing')!.value?.id ? editForm.get('hearing')!.value : hearingOption"
+              *ngFor="let hearingOption of hearingsSharedCollection; trackBy: trackHearingById"
+            >
+              {{ hearingOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

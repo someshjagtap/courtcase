@@ -42,7 +42,9 @@
     "clientTheme": "none",
     "clientThemeVariant": "",
     "reactive": false,
-    "enableGradleEnterprise": false
+    "enableGradleEnterprise": false,
+    "entities": ["CourtCase", "Hearing", "UserData"],
+    "lastLiquibaseTimestamp": 1640345605000
   },
   "git-provider": "GitHub",
   "git-company": "someshjagtap",
