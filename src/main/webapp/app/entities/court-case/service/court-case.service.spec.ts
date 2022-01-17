@@ -1,8 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import dayjs from 'dayjs/esm';
 
-import { DATE_TIME_FORMAT } from 'app/config/input.constants';
 import { ICourtCase, CourtCase } from '../court-case.model';
 
 import { CourtCaseService } from './court-case.service';
@@ -12,7 +10,6 @@ describe('CourtCase Service', () => {
   let httpMock: HttpTestingController;
   let elemDefault: ICourtCase;
   let expectedResult: ICourtCase | ICourtCase[] | boolean | null;
-  let currentDate: dayjs.Dayjs;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -21,7 +18,6 @@ describe('CourtCase Service', () => {
     expectedResult = null;
     service = TestBed.inject(CourtCaseService);
     httpMock = TestBed.inject(HttpTestingController);
-    currentDate = dayjs();
 
     elemDefault = {
       id: 0,
@@ -36,21 +32,21 @@ describe('CourtCase Service', () => {
       courtName: 'AAAAAAA',
       defendantName: 'AAAAAAA',
       caseDescription: 'AAAAAAA',
-      caseFilingDate: currentDate,
+      caseFilingDate: 'AAAAAAA',
       totalClaimAmount: 'AAAAAAA',
       caseOfficer: 'AAAAAAA',
       caselawyer: 'AAAAAAA',
-      nextHearingDate: currentDate,
+      nextHearingDate: 'AAAAAAA',
       amountDepositeInCourt: 'AAAAAAA',
       lar: 'AAAAAAA',
       incCompensation: 'AAAAAAA',
       amountPaidSLO: 'AAAAAAA',
       chequeNo: 'AAAAAAA',
-      chequeDate: currentDate,
+      chequeDate: 'AAAAAAA',
       appealNo: 'AAAAAAA',
       courtAmount: 'AAAAAAA',
       appealAmount: 'AAAAAAA',
-      appealDate: currentDate,
+      appealDate: 'AAAAAAA',
       description: 'AAAAAAA',
       comment: 'AAAAAAA',
       caseStatus: 'AAAAAAA',
@@ -64,15 +60,7 @@ describe('CourtCase Service', () => {
 
   describe('Service methods', () => {
     it('should find an element', () => {
-      const returnedFromService = Object.assign(
-        {
-          caseFilingDate: currentDate.format(DATE_TIME_FORMAT),
-          nextHearingDate: currentDate.format(DATE_TIME_FORMAT),
-          chequeDate: currentDate.format(DATE_TIME_FORMAT),
-          appealDate: currentDate.format(DATE_TIME_FORMAT),
-        },
-        elemDefault
-      );
+      const returnedFromService = Object.assign({}, elemDefault);
 
       service.find(123).subscribe(resp => (expectedResult = resp.body));
 
@@ -85,23 +73,11 @@ describe('CourtCase Service', () => {
       const returnedFromService = Object.assign(
         {
           id: 0,
-          caseFilingDate: currentDate.format(DATE_TIME_FORMAT),
-          nextHearingDate: currentDate.format(DATE_TIME_FORMAT),
-          chequeDate: currentDate.format(DATE_TIME_FORMAT),
-          appealDate: currentDate.format(DATE_TIME_FORMAT),
         },
         elemDefault
       );
 
-      const expected = Object.assign(
-        {
-          caseFilingDate: currentDate,
-          nextHearingDate: currentDate,
-          chequeDate: currentDate,
-          appealDate: currentDate,
-        },
-        returnedFromService
-      );
+      const expected = Object.assign({}, returnedFromService);
 
       service.create(new CourtCase()).subscribe(resp => (expectedResult = resp.body));
 
@@ -125,21 +101,21 @@ describe('CourtCase Service', () => {
           courtName: 'BBBBBB',
           defendantName: 'BBBBBB',
           caseDescription: 'BBBBBB',
-          caseFilingDate: currentDate.format(DATE_TIME_FORMAT),
+          caseFilingDate: 'BBBBBB',
           totalClaimAmount: 'BBBBBB',
           caseOfficer: 'BBBBBB',
           caselawyer: 'BBBBBB',
-          nextHearingDate: currentDate.format(DATE_TIME_FORMAT),
+          nextHearingDate: 'BBBBBB',
           amountDepositeInCourt: 'BBBBBB',
           lar: 'BBBBBB',
           incCompensation: 'BBBBBB',
           amountPaidSLO: 'BBBBBB',
           chequeNo: 'BBBBBB',
-          chequeDate: currentDate.format(DATE_TIME_FORMAT),
+          chequeDate: 'BBBBBB',
           appealNo: 'BBBBBB',
           courtAmount: 'BBBBBB',
           appealAmount: 'BBBBBB',
-          appealDate: currentDate.format(DATE_TIME_FORMAT),
+          appealDate: 'BBBBBB',
           description: 'BBBBBB',
           comment: 'BBBBBB',
           caseStatus: 'BBBBBB',
@@ -152,15 +128,7 @@ describe('CourtCase Service', () => {
         elemDefault
       );
 
-      const expected = Object.assign(
-        {
-          caseFilingDate: currentDate,
-          nextHearingDate: currentDate,
-          chequeDate: currentDate,
-          appealDate: currentDate,
-        },
-        returnedFromService
-      );
+      const expected = Object.assign({}, returnedFromService);
 
       service.update(expected).subscribe(resp => (expectedResult = resp.body));
 
@@ -191,15 +159,7 @@ describe('CourtCase Service', () => {
 
       const returnedFromService = Object.assign(patchObject, elemDefault);
 
-      const expected = Object.assign(
-        {
-          caseFilingDate: currentDate,
-          nextHearingDate: currentDate,
-          chequeDate: currentDate,
-          appealDate: currentDate,
-        },
-        returnedFromService
-      );
+      const expected = Object.assign({}, returnedFromService);
 
       service.partialUpdate(patchObject).subscribe(resp => (expectedResult = resp.body));
 
@@ -223,21 +183,21 @@ describe('CourtCase Service', () => {
           courtName: 'BBBBBB',
           defendantName: 'BBBBBB',
           caseDescription: 'BBBBBB',
-          caseFilingDate: currentDate.format(DATE_TIME_FORMAT),
+          caseFilingDate: 'BBBBBB',
           totalClaimAmount: 'BBBBBB',
           caseOfficer: 'BBBBBB',
           caselawyer: 'BBBBBB',
-          nextHearingDate: currentDate.format(DATE_TIME_FORMAT),
+          nextHearingDate: 'BBBBBB',
           amountDepositeInCourt: 'BBBBBB',
           lar: 'BBBBBB',
           incCompensation: 'BBBBBB',
           amountPaidSLO: 'BBBBBB',
           chequeNo: 'BBBBBB',
-          chequeDate: currentDate.format(DATE_TIME_FORMAT),
+          chequeDate: 'BBBBBB',
           appealNo: 'BBBBBB',
           courtAmount: 'BBBBBB',
           appealAmount: 'BBBBBB',
-          appealDate: currentDate.format(DATE_TIME_FORMAT),
+          appealDate: 'BBBBBB',
           description: 'BBBBBB',
           comment: 'BBBBBB',
           caseStatus: 'BBBBBB',
@@ -250,15 +210,7 @@ describe('CourtCase Service', () => {
         elemDefault
       );
 
-      const expected = Object.assign(
-        {
-          caseFilingDate: currentDate,
-          nextHearingDate: currentDate,
-          chequeDate: currentDate,
-          appealDate: currentDate,
-        },
-        returnedFromService
-      );
+      const expected = Object.assign({}, returnedFromService);
 
       service.query().subscribe(resp => (expectedResult = resp.body));
 

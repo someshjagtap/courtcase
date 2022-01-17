@@ -47,7 +47,7 @@
     },
     {
       "fieldName": "caseFilingDate",
-      "fieldType": "Instant"
+      "fieldType": "String"
     },
     {
       "fieldName": "totalClaimAmount",
@@ -63,7 +63,7 @@
     },
     {
       "fieldName": "nextHearingDate",
-      "fieldType": "Instant"
+      "fieldType": "String"
     },
     {
       "fieldName": "amountDepositeInCourt",
@@ -87,7 +87,7 @@
     },
     {
       "fieldName": "chequeDate",
-      "fieldType": "Instant"
+      "fieldType": "String"
     },
     {
       "fieldName": "appealNo",
@@ -103,7 +103,7 @@
     },
     {
       "fieldName": "appealDate",
-      "fieldType": "Instant"
+      "fieldType": "String"
     },
     {
       "fieldName": "description",

@@ -1,7 +1,6 @@
 package com.techvg.courtcase.service.dto;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Objects;
 
 /**
@@ -11,13 +10,13 @@ public class HearingDTO implements Serializable {
 
     private Long id;
 
-    private Instant hearingDate;
+    private String hearingDate;
 
-    private Instant nextHearingDate;
+    private String nextHearingDate;
 
     private String description;
 
-    private Instant previousHearingDate;
+    private String previousHearingDate;
 
     private String conclusion;
 
@@ -49,19 +48,19 @@ public class HearingDTO implements Serializable {
         this.id = id;
     }
 
-    public Instant getHearingDate() {
+    public String getHearingDate() {
         return hearingDate;
     }
 
-    public void setHearingDate(Instant hearingDate) {
+    public void setHearingDate(String hearingDate) {
         this.hearingDate = hearingDate;
     }
 
-    public Instant getNextHearingDate() {
+    public String getNextHearingDate() {
         return nextHearingDate;
     }
 
-    public void setNextHearingDate(Instant nextHearingDate) {
+    public void setNextHearingDate(String nextHearingDate) {
         this.nextHearingDate = nextHearingDate;
     }
 
@@ -73,11 +72,11 @@ public class HearingDTO implements Serializable {
         this.description = description;
     }
 
-    public Instant getPreviousHearingDate() {
+    public String getPreviousHearingDate() {
         return previousHearingDate;
     }
 
-    public void setPreviousHearingDate(Instant previousHearingDate) {
+    public void setPreviousHearingDate(String previousHearingDate) {
         this.previousHearingDate = previousHearingDate;
     }
 

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import dayjs from 'dayjs/esm';
 
 import { isPresent } from 'app/core/util/operators';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
@@ -19,37 +17,28 @@ export class CourtCaseService {
   constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
 
   create(courtCase: ICourtCase): Observable<EntityResponseType> {
-    const copy = this.convertDateFromClient(courtCase);
-    return this.http
-      .post<ICourtCase>(this.resourceUrl, copy, { observe: 'response' })
-      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+    return this.http.post<ICourtCase>(this.resourceUrl, courtCase, { observe: 'response' });
   }
 
   update(courtCase: ICourtCase): Observable<EntityResponseType> {
-    const copy = this.convertDateFromClient(courtCase);
-    return this.http
-      .put<ICourtCase>(`${this.resourceUrl}/${getCourtCaseIdentifier(courtCase) as number}`, copy, { observe: 'response' })
-      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+    return this.http.put<ICourtCase>(`${this.resourceUrl}/${getCourtCaseIdentifier(courtCase) as number}`, courtCase, {
+      observe: 'response',
+    });
   }
 
   partialUpdate(courtCase: ICourtCase): Observable<EntityResponseType> {
-    const copy = this.convertDateFromClient(courtCase);
-    return this.http
-      .patch<ICourtCase>(`${this.resourceUrl}/${getCourtCaseIdentifier(courtCase) as number}`, copy, { observe: 'response' })
-      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+    return this.http.patch<ICourtCase>(`${this.resourceUrl}/${getCourtCaseIdentifier(courtCase) as number}`, courtCase, {
+      observe: 'response',
+    });
   }
 
   find(id: number): Observable<EntityResponseType> {
-    return this.http
-      .get<ICourtCase>(`${this.resourceUrl}/${id}`, { observe: 'response' })
-      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+    return this.http.get<ICourtCase>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
-    return this.http
-      .get<ICourtCase[]>(this.resourceUrl, { params: options, observe: 'response' })
-      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+    return this.http.get<ICourtCase[]>(this.resourceUrl, { params: options, observe: 'response' });
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
@@ -74,36 +63,5 @@ export class CourtCaseService {
       return [...courtCasesToAdd, ...courtCaseCollection];
     }
     return courtCaseCollection;
-  }
-
-  protected convertDateFromClient(courtCase: ICourtCase): ICourtCase {
-    return Object.assign({}, courtCase, {
-      caseFilingDate: courtCase.caseFilingDate?.isValid() ? courtCase.caseFilingDate.toJSON() : undefined,
-      nextHearingDate: courtCase.nextHearingDate?.isValid() ? courtCase.nextHearingDate.toJSON() : undefined,
-      chequeDate: courtCase.chequeDate?.isValid() ? courtCase.chequeDate.toJSON() : undefined,
-      appealDate: courtCase.appealDate?.isValid() ? courtCase.appealDate.toJSON() : undefined,
-    });
-  }
-
-  protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
-    if (res.body) {
-      res.body.caseFilingDate = res.body.caseFilingDate ? dayjs(res.body.caseFilingDate) : undefined;
-      res.body.nextHearingDate = res.body.nextHearingDate ? dayjs(res.body.nextHearingDate) : undefined;
-      res.body.chequeDate = res.body.chequeDate ? dayjs(res.body.chequeDate) : undefined;
-      res.body.appealDate = res.body.appealDate ? dayjs(res.body.appealDate) : undefined;
-    }
-    return res;
-  }
-
-  protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
-    if (res.body) {
-      res.body.forEach((courtCase: ICourtCase) => {
-        courtCase.caseFilingDate = courtCase.caseFilingDate ? dayjs(courtCase.caseFilingDate) : undefined;
-        courtCase.nextHearingDate = courtCase.nextHearingDate ? dayjs(courtCase.nextHearingDate) : undefined;
-        courtCase.chequeDate = courtCase.chequeDate ? dayjs(courtCase.chequeDate) : undefined;
-        courtCase.appealDate = courtCase.appealDate ? dayjs(courtCase.appealDate) : undefined;
-      });
-    }
-    return res;
   }
 }

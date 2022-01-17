@@ -1,12 +1,11 @@
-import dayjs from 'dayjs/esm';
 import { ICourtCase } from 'app/entities/court-case/court-case.model';
 
 export interface IHearing {
   id?: number;
-  hearingDate?: dayjs.Dayjs | null;
-  nextHearingDate?: dayjs.Dayjs | null;
+  hearingDate?: string | null;
+  nextHearingDate?: string | null;
   description?: string | null;
-  previousHearingDate?: dayjs.Dayjs | null;
+  previousHearingDate?: string | null;
   conclusion?: string | null;
   comment?: string | null;
   status?: string | null;
@@ -23,10 +22,10 @@ export interface IHearing {
 export class Hearing implements IHearing {
   constructor(
     public id?: number,
-    public hearingDate?: dayjs.Dayjs | null,
-    public nextHearingDate?: dayjs.Dayjs | null,
+    public hearingDate?: string | null,
+    public nextHearingDate?: string | null,
     public description?: string | null,
-    public previousHearingDate?: dayjs.Dayjs | null,
+    public previousHearingDate?: string | null,
     public conclusion?: string | null,
     public comment?: string | null,
     public status?: string | null,

@@ -5,9 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 
-import dayjs from 'dayjs/esm';
-import { DATE_TIME_FORMAT } from 'app/config/input.constants';
-
 import { ICourtCase, CourtCase } from '../court-case.model';
 import { CourtCaseService } from '../service/court-case.service';
 
@@ -60,14 +57,6 @@ export class CourtCaseUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ courtCase }) => {
-      if (courtCase.id === undefined) {
-        const today = dayjs().startOf('day');
-        courtCase.caseFilingDate = today;
-        courtCase.nextHearingDate = today;
-        courtCase.chequeDate = today;
-        courtCase.appealDate = today;
-      }
-
       this.updateForm(courtCase);
     });
   }
@@ -119,21 +108,21 @@ export class CourtCaseUpdateComponent implements OnInit {
       courtName: courtCase.courtName,
       defendantName: courtCase.defendantName,
       caseDescription: courtCase.caseDescription,
-      caseFilingDate: courtCase.caseFilingDate ? courtCase.caseFilingDate.format(DATE_TIME_FORMAT) : null,
+      caseFilingDate: courtCase.caseFilingDate,
       totalClaimAmount: courtCase.totalClaimAmount,
       caseOfficer: courtCase.caseOfficer,
       caselawyer: courtCase.caselawyer,
-      nextHearingDate: courtCase.nextHearingDate ? courtCase.nextHearingDate.format(DATE_TIME_FORMAT) : null,
+      nextHearingDate: courtCase.nextHearingDate,
       amountDepositeInCourt: courtCase.amountDepositeInCourt,
       lar: courtCase.lar,
       incCompensation: courtCase.incCompensation,
       amountPaidSLO: courtCase.amountPaidSLO,
       chequeNo: courtCase.chequeNo,
-      chequeDate: courtCase.chequeDate ? courtCase.chequeDate.format(DATE_TIME_FORMAT) : null,
+      chequeDate: courtCase.chequeDate,
       appealNo: courtCase.appealNo,
       courtAmount: courtCase.courtAmount,
       appealAmount: courtCase.appealAmount,
-      appealDate: courtCase.appealDate ? courtCase.appealDate.format(DATE_TIME_FORMAT) : null,
+      appealDate: courtCase.appealDate,
       description: courtCase.description,
       comment: courtCase.comment,
       caseStatus: courtCase.caseStatus,
@@ -160,25 +149,21 @@ export class CourtCaseUpdateComponent implements OnInit {
       courtName: this.editForm.get(['courtName'])!.value,
       defendantName: this.editForm.get(['defendantName'])!.value,
       caseDescription: this.editForm.get(['caseDescription'])!.value,
-      caseFilingDate: this.editForm.get(['caseFilingDate'])!.value
-        ? dayjs(this.editForm.get(['caseFilingDate'])!.value, DATE_TIME_FORMAT)
-        : undefined,
+      caseFilingDate: this.editForm.get(['caseFilingDate'])!.value,
       totalClaimAmount: this.editForm.get(['totalClaimAmount'])!.value,
       caseOfficer: this.editForm.get(['caseOfficer'])!.value,
       caselawyer: this.editForm.get(['caselawyer'])!.value,
-      nextHearingDate: this.editForm.get(['nextHearingDate'])!.value
-        ? dayjs(this.editForm.get(['nextHearingDate'])!.value, DATE_TIME_FORMAT)
-        : undefined,
+      nextHearingDate: this.editForm.get(['nextHearingDate'])!.value,
       amountDepositeInCourt: this.editForm.get(['amountDepositeInCourt'])!.value,
       lar: this.editForm.get(['lar'])!.value,
       incCompensation: this.editForm.get(['incCompensation'])!.value,
       amountPaidSLO: this.editForm.get(['amountPaidSLO'])!.value,
       chequeNo: this.editForm.get(['chequeNo'])!.value,
-      chequeDate: this.editForm.get(['chequeDate'])!.value ? dayjs(this.editForm.get(['chequeDate'])!.value, DATE_TIME_FORMAT) : undefined,
+      chequeDate: this.editForm.get(['chequeDate'])!.value,
       appealNo: this.editForm.get(['appealNo'])!.value,
       courtAmount: this.editForm.get(['courtAmount'])!.value,
       appealAmount: this.editForm.get(['appealAmount'])!.value,
-      appealDate: this.editForm.get(['appealDate'])!.value ? dayjs(this.editForm.get(['appealDate'])!.value, DATE_TIME_FORMAT) : undefined,
+      appealDate: this.editForm.get(['appealDate'])!.value,
       description: this.editForm.get(['description'])!.value,
       comment: this.editForm.get(['comment'])!.value,
       caseStatus: this.editForm.get(['caseStatus'])!.value,

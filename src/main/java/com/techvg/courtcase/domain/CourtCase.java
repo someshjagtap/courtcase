@@ -2,7 +2,6 @@ package com.techvg.courtcase.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
@@ -58,7 +57,7 @@ public class CourtCase implements Serializable {
     private String caseDescription;
 
     @Column(name = "case_filing_date")
-    private Instant caseFilingDate;
+    private String caseFilingDate;
 
     @Column(name = "total_claim_amount")
     private String totalClaimAmount;
@@ -70,7 +69,7 @@ public class CourtCase implements Serializable {
     private String caselawyer;
 
     @Column(name = "next_hearing_date")
-    private Instant nextHearingDate;
+    private String nextHearingDate;
 
     @Column(name = "amount_deposite_in_court")
     private String amountDepositeInCourt;
@@ -88,7 +87,7 @@ public class CourtCase implements Serializable {
     private String chequeNo;
 
     @Column(name = "cheque_date")
-    private Instant chequeDate;
+    private String chequeDate;
 
     @Column(name = "appeal_no")
     private String appealNo;
@@ -100,7 +99,7 @@ public class CourtCase implements Serializable {
     private String appealAmount;
 
     @Column(name = "appeal_date")
-    private Instant appealDate;
+    private String appealDate;
 
     @Column(name = "description")
     private String description;
@@ -289,16 +288,16 @@ public class CourtCase implements Serializable {
         this.caseDescription = caseDescription;
     }
 
-    public Instant getCaseFilingDate() {
+    public String getCaseFilingDate() {
         return this.caseFilingDate;
     }
 
-    public CourtCase caseFilingDate(Instant caseFilingDate) {
+    public CourtCase caseFilingDate(String caseFilingDate) {
         this.setCaseFilingDate(caseFilingDate);
         return this;
     }
 
-    public void setCaseFilingDate(Instant caseFilingDate) {
+    public void setCaseFilingDate(String caseFilingDate) {
         this.caseFilingDate = caseFilingDate;
     }
 
@@ -341,16 +340,16 @@ public class CourtCase implements Serializable {
         this.caselawyer = caselawyer;
     }
 
-    public Instant getNextHearingDate() {
+    public String getNextHearingDate() {
         return this.nextHearingDate;
     }
 
-    public CourtCase nextHearingDate(Instant nextHearingDate) {
+    public CourtCase nextHearingDate(String nextHearingDate) {
         this.setNextHearingDate(nextHearingDate);
         return this;
     }
 
-    public void setNextHearingDate(Instant nextHearingDate) {
+    public void setNextHearingDate(String nextHearingDate) {
         this.nextHearingDate = nextHearingDate;
     }
 
@@ -419,16 +418,16 @@ public class CourtCase implements Serializable {
         this.chequeNo = chequeNo;
     }
 
-    public Instant getChequeDate() {
+    public String getChequeDate() {
         return this.chequeDate;
     }
 
-    public CourtCase chequeDate(Instant chequeDate) {
+    public CourtCase chequeDate(String chequeDate) {
         this.setChequeDate(chequeDate);
         return this;
     }
 
-    public void setChequeDate(Instant chequeDate) {
+    public void setChequeDate(String chequeDate) {
         this.chequeDate = chequeDate;
     }
 
@@ -471,16 +470,16 @@ public class CourtCase implements Serializable {
         this.appealAmount = appealAmount;
     }
 
-    public Instant getAppealDate() {
+    public String getAppealDate() {
         return this.appealDate;
     }
 
-    public CourtCase appealDate(Instant appealDate) {
+    public CourtCase appealDate(String appealDate) {
         this.setAppealDate(appealDate);
         return this;
     }
 
-    public void setAppealDate(Instant appealDate) {
+    public void setAppealDate(String appealDate) {
         this.appealDate = appealDate;
     }
 

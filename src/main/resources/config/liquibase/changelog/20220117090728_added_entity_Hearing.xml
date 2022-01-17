@@ -14,16 +14,16 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="hearing_date" type="${datetimeType}">
+            <column name="hearing_date" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="next_hearing_date" type="${datetimeType}">
+            <column name="next_hearing_date" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="previous_hearing_date" type="${datetimeType}">
+            <column name="previous_hearing_date" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="conclusion" type="varchar(255)">
@@ -61,9 +61,6 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="hearing" columnName="hearing_date" columnDataType="${datetimeType}"/>
-        <dropDefaultValue tableName="hearing" columnName="next_hearing_date" columnDataType="${datetimeType}"/>
-        <dropDefaultValue tableName="hearing" columnName="previous_hearing_date" columnDataType="${datetimeType}"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -83,10 +80,10 @@
                   tableName="hearing"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
-            <column name="hearing_date" type="date"/>
-            <column name="next_hearing_date" type="date"/>
+            <column name="hearing_date" type="string"/>
+            <column name="next_hearing_date" type="string"/>
             <column name="description" type="string"/>
-            <column name="previous_hearing_date" type="date"/>
+            <column name="previous_hearing_date" type="string"/>
             <column name="conclusion" type="string"/>
             <column name="comment" type="string"/>
             <column name="status" type="string"/>

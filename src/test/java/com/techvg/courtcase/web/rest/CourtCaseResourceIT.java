@@ -10,8 +10,6 @@ import com.techvg.courtcase.domain.CourtCase;
 import com.techvg.courtcase.repository.CourtCaseRepository;
 import com.techvg.courtcase.service.dto.CourtCaseDTO;
 import com.techvg.courtcase.service.mapper.CourtCaseMapper;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -66,8 +64,8 @@ class CourtCaseResourceIT {
     private static final String DEFAULT_CASE_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_CASE_DESCRIPTION = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_CASE_FILING_DATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_CASE_FILING_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final String DEFAULT_CASE_FILING_DATE = "AAAAAAAAAA";
+    private static final String UPDATED_CASE_FILING_DATE = "BBBBBBBBBB";
 
     private static final String DEFAULT_TOTAL_CLAIM_AMOUNT = "AAAAAAAAAA";
     private static final String UPDATED_TOTAL_CLAIM_AMOUNT = "BBBBBBBBBB";
@@ -78,8 +76,8 @@ class CourtCaseResourceIT {
     private static final String DEFAULT_CASELAWYER = "AAAAAAAAAA";
     private static final String UPDATED_CASELAWYER = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_NEXT_HEARING_DATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_NEXT_HEARING_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final String DEFAULT_NEXT_HEARING_DATE = "AAAAAAAAAA";
+    private static final String UPDATED_NEXT_HEARING_DATE = "BBBBBBBBBB";
 
     private static final String DEFAULT_AMOUNT_DEPOSITE_IN_COURT = "AAAAAAAAAA";
     private static final String UPDATED_AMOUNT_DEPOSITE_IN_COURT = "BBBBBBBBBB";
@@ -96,8 +94,8 @@ class CourtCaseResourceIT {
     private static final String DEFAULT_CHEQUE_NO = "AAAAAAAAAA";
     private static final String UPDATED_CHEQUE_NO = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_CHEQUE_DATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_CHEQUE_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final String DEFAULT_CHEQUE_DATE = "AAAAAAAAAA";
+    private static final String UPDATED_CHEQUE_DATE = "BBBBBBBBBB";
 
     private static final String DEFAULT_APPEAL_NO = "AAAAAAAAAA";
     private static final String UPDATED_APPEAL_NO = "BBBBBBBBBB";
@@ -108,8 +106,8 @@ class CourtCaseResourceIT {
     private static final String DEFAULT_APPEAL_AMOUNT = "AAAAAAAAAA";
     private static final String UPDATED_APPEAL_AMOUNT = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_APPEAL_DATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_APPEAL_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final String DEFAULT_APPEAL_DATE = "AAAAAAAAAA";
+    private static final String UPDATED_APPEAL_DATE = "BBBBBBBBBB";
 
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
@@ -342,21 +340,21 @@ class CourtCaseResourceIT {
             .andExpect(jsonPath("$.[*].courtName").value(hasItem(DEFAULT_COURT_NAME)))
             .andExpect(jsonPath("$.[*].defendantName").value(hasItem(DEFAULT_DEFENDANT_NAME)))
             .andExpect(jsonPath("$.[*].caseDescription").value(hasItem(DEFAULT_CASE_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].caseFilingDate").value(hasItem(DEFAULT_CASE_FILING_DATE.toString())))
+            .andExpect(jsonPath("$.[*].caseFilingDate").value(hasItem(DEFAULT_CASE_FILING_DATE)))
             .andExpect(jsonPath("$.[*].totalClaimAmount").value(hasItem(DEFAULT_TOTAL_CLAIM_AMOUNT)))
             .andExpect(jsonPath("$.[*].caseOfficer").value(hasItem(DEFAULT_CASE_OFFICER)))
             .andExpect(jsonPath("$.[*].caselawyer").value(hasItem(DEFAULT_CASELAWYER)))
-            .andExpect(jsonPath("$.[*].nextHearingDate").value(hasItem(DEFAULT_NEXT_HEARING_DATE.toString())))
+            .andExpect(jsonPath("$.[*].nextHearingDate").value(hasItem(DEFAULT_NEXT_HEARING_DATE)))
             .andExpect(jsonPath("$.[*].amountDepositeInCourt").value(hasItem(DEFAULT_AMOUNT_DEPOSITE_IN_COURT)))
             .andExpect(jsonPath("$.[*].lar").value(hasItem(DEFAULT_LAR)))
             .andExpect(jsonPath("$.[*].incCompensation").value(hasItem(DEFAULT_INC_COMPENSATION)))
             .andExpect(jsonPath("$.[*].amountPaidSLO").value(hasItem(DEFAULT_AMOUNT_PAID_SLO)))
             .andExpect(jsonPath("$.[*].chequeNo").value(hasItem(DEFAULT_CHEQUE_NO)))
-            .andExpect(jsonPath("$.[*].chequeDate").value(hasItem(DEFAULT_CHEQUE_DATE.toString())))
+            .andExpect(jsonPath("$.[*].chequeDate").value(hasItem(DEFAULT_CHEQUE_DATE)))
             .andExpect(jsonPath("$.[*].appealNo").value(hasItem(DEFAULT_APPEAL_NO)))
             .andExpect(jsonPath("$.[*].courtAmount").value(hasItem(DEFAULT_COURT_AMOUNT)))
             .andExpect(jsonPath("$.[*].appealAmount").value(hasItem(DEFAULT_APPEAL_AMOUNT)))
-            .andExpect(jsonPath("$.[*].appealDate").value(hasItem(DEFAULT_APPEAL_DATE.toString())))
+            .andExpect(jsonPath("$.[*].appealDate").value(hasItem(DEFAULT_APPEAL_DATE)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].comment").value(hasItem(DEFAULT_COMMENT)))
             .andExpect(jsonPath("$.[*].caseStatus").value(hasItem(DEFAULT_CASE_STATUS)))
@@ -390,21 +388,21 @@ class CourtCaseResourceIT {
             .andExpect(jsonPath("$.courtName").value(DEFAULT_COURT_NAME))
             .andExpect(jsonPath("$.defendantName").value(DEFAULT_DEFENDANT_NAME))
             .andExpect(jsonPath("$.caseDescription").value(DEFAULT_CASE_DESCRIPTION))
-            .andExpect(jsonPath("$.caseFilingDate").value(DEFAULT_CASE_FILING_DATE.toString()))
+            .andExpect(jsonPath("$.caseFilingDate").value(DEFAULT_CASE_FILING_DATE))
             .andExpect(jsonPath("$.totalClaimAmount").value(DEFAULT_TOTAL_CLAIM_AMOUNT))
             .andExpect(jsonPath("$.caseOfficer").value(DEFAULT_CASE_OFFICER))
             .andExpect(jsonPath("$.caselawyer").value(DEFAULT_CASELAWYER))
-            .andExpect(jsonPath("$.nextHearingDate").value(DEFAULT_NEXT_HEARING_DATE.toString()))
+            .andExpect(jsonPath("$.nextHearingDate").value(DEFAULT_NEXT_HEARING_DATE))
             .andExpect(jsonPath("$.amountDepositeInCourt").value(DEFAULT_AMOUNT_DEPOSITE_IN_COURT))
             .andExpect(jsonPath("$.lar").value(DEFAULT_LAR))
             .andExpect(jsonPath("$.incCompensation").value(DEFAULT_INC_COMPENSATION))
             .andExpect(jsonPath("$.amountPaidSLO").value(DEFAULT_AMOUNT_PAID_SLO))
             .andExpect(jsonPath("$.chequeNo").value(DEFAULT_CHEQUE_NO))
-            .andExpect(jsonPath("$.chequeDate").value(DEFAULT_CHEQUE_DATE.toString()))
+            .andExpect(jsonPath("$.chequeDate").value(DEFAULT_CHEQUE_DATE))
             .andExpect(jsonPath("$.appealNo").value(DEFAULT_APPEAL_NO))
             .andExpect(jsonPath("$.courtAmount").value(DEFAULT_COURT_AMOUNT))
             .andExpect(jsonPath("$.appealAmount").value(DEFAULT_APPEAL_AMOUNT))
-            .andExpect(jsonPath("$.appealDate").value(DEFAULT_APPEAL_DATE.toString()))
+            .andExpect(jsonPath("$.appealDate").value(DEFAULT_APPEAL_DATE))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.comment").value(DEFAULT_COMMENT))
             .andExpect(jsonPath("$.caseStatus").value(DEFAULT_CASE_STATUS))

@@ -87,10 +87,10 @@
           <td>
             <a [routerLink]="['/hearing', hearing.id, 'view']">{{ hearing.id }}</a>
           </td>
-          <td>{{ hearing.hearingDate | formatMediumDatetime }}</td>
-          <td>{{ hearing.nextHearingDate | formatMediumDatetime }}</td>
+          <td>{{ hearing.hearingDate }}</td>
+          <td>{{ hearing.nextHearingDate }}</td>
           <td>{{ hearing.description }}</td>
-          <td>{{ hearing.previousHearingDate | formatMediumDatetime }}</td>
+          <td>{{ hearing.previousHearingDate }}</td>
           <td>{{ hearing.conclusion }}</td>
           <td>{{ hearing.comment }}</td>
           <td>{{ hearing.status }}</td>

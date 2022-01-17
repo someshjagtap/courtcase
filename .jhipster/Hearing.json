@@ -3,11 +3,11 @@
   "fields": [
     {
       "fieldName": "hearingDate",
-      "fieldType": "Instant"
+      "fieldType": "String"
     },
     {
       "fieldName": "nextHearingDate",
-      "fieldType": "Instant"
+      "fieldType": "String"
     },
     {
       "fieldName": "description",
@@ -15,7 +15,7 @@
     },
     {
       "fieldName": "previousHearingDate",
-      "fieldType": "Instant"
+      "fieldType": "String"
     },
     {
       "fieldName": "conclusion",
