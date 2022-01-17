@@ -1,0 +1,58 @@
+{
+  "courtcaseBackendApp": {
+    "courtCase": {
+      "home": {
+        "title": "Court Cases",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Court Case",
+        "createOrEditLabel": "Create or edit a Court Case",
+        "notFound": "No Court Cases found"
+      },
+      "created": "A new Court Case is created with identifier {{ param }}",
+      "updated": "A Court Case is updated with identifier {{ param }}",
+      "deleted": "A Court Case is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Court Case {{ id }}?"
+      },
+      "detail": {
+        "title": "Court Case"
+      },
+      "id": "ID",
+      "caseNo": "Case No",
+      "villageName": "Village Name",
+      "accuserName": "Accuser Name",
+      "applicationNo": "Application No",
+      "landReferenceNo": "Land Reference No",
+      "firstAppeal": "First Appeal",
+      "amount": "Amount",
+      "projectName": "Project Name",
+      "courtName": "Court Name",
+      "defendantName": "Defendant Name",
+      "caseDescription": "Case Description",
+      "caseFilingDate": "Case Filing Date",
+      "totalClaimAmount": "Total Claim Amount",
+      "caseOfficer": "Case Officer",
+      "caselawyer": "Caselawyer",
+      "nextHearingDate": "Next Hearing Date",
+      "amountDepositeInCourt": "Amount Deposite In Court",
+      "lar": "Lar",
+      "incCompensation": "Inc Compensation",
+      "amountPaidSLO": "Amount Paid SLO",
+      "chequeNo": "Cheque No",
+      "chequeDate": "Cheque Date",
+      "appealNo": "Appeal No",
+      "courtAmount": "Court Amount",
+      "appealAmount": "Appeal Amount",
+      "appealDate": "Appeal Date",
+      "description": "Description",
+      "comment": "Comment",
+      "caseStatus": "Case Status",
+      "freefield1": "Freefield 1",
+      "freefield2": "Freefield 2",
+      "freefield3": "Freefield 3",
+      "lastModifiedBy": "Last Modified By",
+      "lastModified": "Last Modified",
+      "courtCase": "Court Case"
+    }
+  }
+}

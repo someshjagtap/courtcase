@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userData">
+      <h2 data-cy="userDataDetailsHeading"><span jhiTranslate="courtcaseBackendApp.userData.detail.title">User Data</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userData.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="courtcaseBackendApp.userData.firstname">Firstname</span></dt>
+        <dd>
+          <span>{{ userData.firstname }}</span>
+        </dd>
+        <dt><span jhiTranslate="courtcaseBackendApp.userData.lastName">Last Name</span></dt>
+        <dd>
+          <span>{{ userData.lastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="courtcaseBackendApp.userData.contactNo">Contact No</span></dt>
+        <dd>
+          <span>{{ userData.contactNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="courtcaseBackendApp.userData.emailId">Email Id</span></dt>
+        <dd>
+          <span>{{ userData.emailId }}</span>
+        </dd>
+        <dt><span jhiTranslate="courtcaseBackendApp.userData.address">Address</span></dt>
+        <dd>
+          <span>{{ userData.address }}</span>
+        </dd>
+        <dt><span jhiTranslate="courtcaseBackendApp.userData.userName">User Name</span></dt>
+        <dd>
+          <span>{{ userData.userName }}</span>
+        </dd>
+        <dt><span jhiTranslate="courtcaseBackendApp.userData.password">Password</span></dt>
+        <dd>
+          <span>{{ userData.password }}</span>
+        </dd>
+        <dt><span jhiTranslate="courtcaseBackendApp.userData.verifyPassword">Verify Password</span></dt>
+        <dd>
+          <span>{{ userData.verifyPassword }}</span>
+        </dd>
+        <dt><span jhiTranslate="courtcaseBackendApp.userData.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ userData.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="courtcaseBackendApp.userData.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ userData.lastModified }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-data', userData.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

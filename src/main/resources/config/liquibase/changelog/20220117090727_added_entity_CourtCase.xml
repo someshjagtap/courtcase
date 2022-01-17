@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity CourtCase.
+    -->
+    <changeSet id="20220117090727-1" author="jhipster">
+        <createTable tableName="court_case">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="case_no" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="village_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="accuser_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="application_no" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="land_reference_no" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="first_appeal" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="amount" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="project_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="court_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="defendant_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="case_description" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="case_filing_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="total_claim_amount" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="case_officer" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="caselawyer" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="next_hearing_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="amount_deposite_in_court" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="lar" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="inc_compensation" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="amount_paid_slo" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cheque_no" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cheque_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="appeal_no" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="court_amount" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="appeal_amount" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="appeal_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="comment" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="case_status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="freefield_1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="freefield_2" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="freefield_3" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_modified_by" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_modified" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="court_case" columnName="case_filing_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="court_case" columnName="next_hearing_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="court_case" columnName="cheque_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="court_case" columnName="appeal_date" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20220117090727-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/court_case.csv"
+                  separator=";"
+                  tableName="court_case"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="case_no" type="string"/>
+            <column name="village_name" type="string"/>
+            <column name="accuser_name" type="string"/>
+            <column name="application_no" type="string"/>
+            <column name="land_reference_no" type="string"/>
+            <column name="first_appeal" type="string"/>
+            <column name="amount" type="string"/>
+            <column name="project_name" type="string"/>
+            <column name="court_name" type="string"/>
+            <column name="defendant_name" type="string"/>
+            <column name="case_description" type="string"/>
+            <column name="case_filing_date" type="date"/>
+            <column name="total_claim_amount" type="string"/>
+            <column name="case_officer" type="string"/>
+            <column name="caselawyer" type="string"/>
+            <column name="next_hearing_date" type="date"/>
+            <column name="amount_deposite_in_court" type="string"/>
+            <column name="lar" type="string"/>
+            <column name="inc_compensation" type="string"/>
+            <column name="amount_paid_slo" type="string"/>
+            <column name="cheque_no" type="string"/>
+            <column name="cheque_date" type="date"/>
+            <column name="appeal_no" type="string"/>
+            <column name="court_amount" type="string"/>
+            <column name="appeal_amount" type="string"/>
+            <column name="appeal_date" type="date"/>
+            <column name="description" type="string"/>
+            <column name="comment" type="string"/>
+            <column name="case_status" type="string"/>
+            <column name="freefield_1" type="string"/>
+            <column name="freefield_2" type="string"/>
+            <column name="freefield_3" type="string"/>
+            <column name="last_modified_by" type="string"/>
+            <column name="last_modified" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>
