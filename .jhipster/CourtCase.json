@@ -1,0 +1,159 @@
+{
+  "name": "CourtCase",
+  "fields": [
+    {
+      "fieldName": "caseNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "villageName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "accuserName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "applicationNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "landReferenceNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "firstAppeal",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "projectName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "courtName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "defendantName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "caseDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "caseFilingDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "totalClaimAmount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "caseOfficer",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "caselawyer",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nextHearingDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "amountDepositeInCourt",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lar",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "incCompensation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "amountPaidSLO",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "chequeNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "chequeDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "appealNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "courtAmount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "appealAmount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "appealDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "comment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "caseStatus",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freefield1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freefield2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freefield3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "hearing",
+      "otherEntityRelationshipName": "hearing",
+      "relationshipName": "courtCase"
+    }
+  ],
+  "entityTableName": "court_case",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220117090727"
+}

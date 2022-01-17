@@ -1,0 +1,222 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-hearing-heading" data-cy="HearingCreateUpdateHeading" jhiTranslate="courtcaseBackendApp.hearing.home.createOrEditLabel">
+        Create or edit a Hearing
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.hearing.hearingDate" for="field_hearingDate"
+            >Hearing Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_hearingDate"
+              data-cy="hearingDate"
+              type="datetime-local"
+              class="form-control"
+              name="hearingDate"
+              formControlName="hearingDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.hearing.nextHearingDate" for="field_nextHearingDate"
+            >Next Hearing Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_nextHearingDate"
+              data-cy="nextHearingDate"
+              type="datetime-local"
+              class="form-control"
+              name="nextHearingDate"
+              formControlName="nextHearingDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.hearing.description" for="field_description"
+            >Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.hearing.previousHearingDate" for="field_previousHearingDate"
+            >Previous Hearing Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_previousHearingDate"
+              data-cy="previousHearingDate"
+              type="datetime-local"
+              class="form-control"
+              name="previousHearingDate"
+              formControlName="previousHearingDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.hearing.conclusion" for="field_conclusion">Conclusion</label>
+          <input
+            type="text"
+            class="form-control"
+            name="conclusion"
+            id="field_conclusion"
+            data-cy="conclusion"
+            formControlName="conclusion"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.hearing.comment" for="field_comment">Comment</label>
+          <input type="text" class="form-control" name="comment" id="field_comment" data-cy="comment" formControlName="comment" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.hearing.status" for="field_status">Status</label>
+          <input type="text" class="form-control" name="status" id="field_status" data-cy="status" formControlName="status" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.hearing.freefield1" for="field_freefield1">Freefield 1</label>
+          <input
+            type="text"
+            class="form-control"
+            name="freefield1"
+            id="field_freefield1"
+            data-cy="freefield1"
+            formControlName="freefield1"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.hearing.freefield2" for="field_freefield2">Freefield 2</label>
+          <input
+            type="text"
+            class="form-control"
+            name="freefield2"
+            id="field_freefield2"
+            data-cy="freefield2"
+            formControlName="freefield2"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.hearing.freefield3" for="field_freefield3">Freefield 3</label>
+          <input
+            type="text"
+            class="form-control"
+            name="freefield3"
+            id="field_freefield3"
+            data-cy="freefield3"
+            formControlName="freefield3"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.hearing.freefield4" for="field_freefield4">Freefield 4</label>
+          <input
+            type="text"
+            class="form-control"
+            name="freefield4"
+            id="field_freefield4"
+            data-cy="freefield4"
+            formControlName="freefield4"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.hearing.freefield5" for="field_freefield5">Freefield 5</label>
+          <input
+            type="text"
+            class="form-control"
+            name="freefield5"
+            id="field_freefield5"
+            data-cy="freefield5"
+            formControlName="freefield5"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.hearing.lastModifiedBy" for="field_lastModifiedBy"
+            >Last Modified By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.hearing.lastModified" for="field_lastModified"
+            >Last Modified</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModified"
+            id="field_lastModified"
+            data-cy="lastModified"
+            formControlName="lastModified"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="courtcaseBackendApp.hearing.hearing" for="field_hearing">Hearing</label>
+          <select class="form-control" id="field_hearing" data-cy="hearing" name="hearing" formControlName="hearing">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="courtCaseOption.id === editForm.get('hearing')!.value?.id ? editForm.get('hearing')!.value : courtCaseOption"
+              *ngFor="let courtCaseOption of courtCasesSharedCollection; trackBy: trackCourtCaseById"
+            >
+              {{ courtCaseOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
