@@ -2,7 +2,6 @@ package com.techvg.courtcase.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
-import java.time.Instant;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -23,16 +22,16 @@ public class Hearing implements Serializable {
     private Long id;
 
     @Column(name = "hearing_date")
-    private Instant hearingDate;
+    private String hearingDate;
 
     @Column(name = "next_hearing_date")
-    private Instant nextHearingDate;
+    private String nextHearingDate;
 
     @Column(name = "description")
     private String description;
 
     @Column(name = "previous_hearing_date")
-    private Instant previousHearingDate;
+    private String previousHearingDate;
 
     @Column(name = "conclusion")
     private String conclusion;
@@ -83,29 +82,29 @@ public class Hearing implements Serializable {
         this.id = id;
     }
 
-    public Instant getHearingDate() {
+    public String getHearingDate() {
         return this.hearingDate;
     }
 
-    public Hearing hearingDate(Instant hearingDate) {
+    public Hearing hearingDate(String hearingDate) {
         this.setHearingDate(hearingDate);
         return this;
     }
 
-    public void setHearingDate(Instant hearingDate) {
+    public void setHearingDate(String hearingDate) {
         this.hearingDate = hearingDate;
     }
 
-    public Instant getNextHearingDate() {
+    public String getNextHearingDate() {
         return this.nextHearingDate;
     }
 
-    public Hearing nextHearingDate(Instant nextHearingDate) {
+    public Hearing nextHearingDate(String nextHearingDate) {
         this.setNextHearingDate(nextHearingDate);
         return this;
     }
 
-    public void setNextHearingDate(Instant nextHearingDate) {
+    public void setNextHearingDate(String nextHearingDate) {
         this.nextHearingDate = nextHearingDate;
     }
 
@@ -122,16 +121,16 @@ public class Hearing implements Serializable {
         this.description = description;
     }
 
-    public Instant getPreviousHearingDate() {
+    public String getPreviousHearingDate() {
         return this.previousHearingDate;
     }
 
-    public Hearing previousHearingDate(Instant previousHearingDate) {
+    public Hearing previousHearingDate(String previousHearingDate) {
         this.setPreviousHearingDate(previousHearingDate);
         return this;
     }
 
-    public void setPreviousHearingDate(Instant previousHearingDate) {
+    public void setPreviousHearingDate(String previousHearingDate) {
         this.previousHearingDate = previousHearingDate;
     }
 

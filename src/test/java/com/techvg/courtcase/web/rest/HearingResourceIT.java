@@ -10,8 +10,6 @@ import com.techvg.courtcase.domain.Hearing;
 import com.techvg.courtcase.repository.HearingRepository;
 import com.techvg.courtcase.service.dto.HearingDTO;
 import com.techvg.courtcase.service.mapper.HearingMapper;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -33,17 +31,17 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class HearingResourceIT {
 
-    private static final Instant DEFAULT_HEARING_DATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_HEARING_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final String DEFAULT_HEARING_DATE = "AAAAAAAAAA";
+    private static final String UPDATED_HEARING_DATE = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_NEXT_HEARING_DATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_NEXT_HEARING_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final String DEFAULT_NEXT_HEARING_DATE = "AAAAAAAAAA";
+    private static final String UPDATED_NEXT_HEARING_DATE = "BBBBBBBBBB";
 
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_PREVIOUS_HEARING_DATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_PREVIOUS_HEARING_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final String DEFAULT_PREVIOUS_HEARING_DATE = "AAAAAAAAAA";
+    private static final String UPDATED_PREVIOUS_HEARING_DATE = "BBBBBBBBBB";
 
     private static final String DEFAULT_CONCLUSION = "AAAAAAAAAA";
     private static final String UPDATED_CONCLUSION = "BBBBBBBBBB";
@@ -211,10 +209,10 @@ class HearingResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(hearing.getId().intValue())))
-            .andExpect(jsonPath("$.[*].hearingDate").value(hasItem(DEFAULT_HEARING_DATE.toString())))
-            .andExpect(jsonPath("$.[*].nextHearingDate").value(hasItem(DEFAULT_NEXT_HEARING_DATE.toString())))
+            .andExpect(jsonPath("$.[*].hearingDate").value(hasItem(DEFAULT_HEARING_DATE)))
+            .andExpect(jsonPath("$.[*].nextHearingDate").value(hasItem(DEFAULT_NEXT_HEARING_DATE)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].previousHearingDate").value(hasItem(DEFAULT_PREVIOUS_HEARING_DATE.toString())))
+            .andExpect(jsonPath("$.[*].previousHearingDate").value(hasItem(DEFAULT_PREVIOUS_HEARING_DATE)))
             .andExpect(jsonPath("$.[*].conclusion").value(hasItem(DEFAULT_CONCLUSION)))
             .andExpect(jsonPath("$.[*].comment").value(hasItem(DEFAULT_COMMENT)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
@@ -239,10 +237,10 @@ class HearingResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(hearing.getId().intValue()))
-            .andExpect(jsonPath("$.hearingDate").value(DEFAULT_HEARING_DATE.toString()))
-            .andExpect(jsonPath("$.nextHearingDate").value(DEFAULT_NEXT_HEARING_DATE.toString()))
+            .andExpect(jsonPath("$.hearingDate").value(DEFAULT_HEARING_DATE))
+            .andExpect(jsonPath("$.nextHearingDate").value(DEFAULT_NEXT_HEARING_DATE))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
-            .andExpect(jsonPath("$.previousHearingDate").value(DEFAULT_PREVIOUS_HEARING_DATE.toString()))
+            .andExpect(jsonPath("$.previousHearingDate").value(DEFAULT_PREVIOUS_HEARING_DATE))
             .andExpect(jsonPath("$.conclusion").value(DEFAULT_CONCLUSION))
             .andExpect(jsonPath("$.comment").value(DEFAULT_COMMENT))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))

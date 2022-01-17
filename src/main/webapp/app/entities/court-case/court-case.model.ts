@@ -1,4 +1,3 @@
-import dayjs from 'dayjs/esm';
 import { IHearing } from 'app/entities/hearing/hearing.model';
 
 export interface ICourtCase {
@@ -14,21 +13,21 @@ export interface ICourtCase {
   courtName?: string | null;
   defendantName?: string | null;
   caseDescription?: string | null;
-  caseFilingDate?: dayjs.Dayjs | null;
+  caseFilingDate?: string | null;
   totalClaimAmount?: string | null;
   caseOfficer?: string | null;
   caselawyer?: string | null;
-  nextHearingDate?: dayjs.Dayjs | null;
+  nextHearingDate?: string | null;
   amountDepositeInCourt?: string | null;
   lar?: string | null;
   incCompensation?: string | null;
   amountPaidSLO?: string | null;
   chequeNo?: string | null;
-  chequeDate?: dayjs.Dayjs | null;
+  chequeDate?: string | null;
   appealNo?: string | null;
   courtAmount?: string | null;
   appealAmount?: string | null;
-  appealDate?: dayjs.Dayjs | null;
+  appealDate?: string | null;
   description?: string | null;
   comment?: string | null;
   caseStatus?: string | null;
@@ -54,21 +53,21 @@ export class CourtCase implements ICourtCase {
     public courtName?: string | null,
     public defendantName?: string | null,
     public caseDescription?: string | null,
-    public caseFilingDate?: dayjs.Dayjs | null,
+    public caseFilingDate?: string | null,
     public totalClaimAmount?: string | null,
     public caseOfficer?: string | null,
     public caselawyer?: string | null,
-    public nextHearingDate?: dayjs.Dayjs | null,
+    public nextHearingDate?: string | null,
     public amountDepositeInCourt?: string | null,
     public lar?: string | null,
     public incCompensation?: string | null,
     public amountPaidSLO?: string | null,
     public chequeNo?: string | null,
-    public chequeDate?: dayjs.Dayjs | null,
+    public chequeDate?: string | null,
     public appealNo?: string | null,
     public courtAmount?: string | null,
     public appealAmount?: string | null,
-    public appealDate?: dayjs.Dayjs | null,
+    public appealDate?: string | null,
     public description?: string | null,
     public comment?: string | null,
     public caseStatus?: string | null,

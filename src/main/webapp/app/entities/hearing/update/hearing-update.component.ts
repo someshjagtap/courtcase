@@ -5,9 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { finalize, map } from 'rxjs/operators';
 
-import dayjs from 'dayjs/esm';
-import { DATE_TIME_FORMAT } from 'app/config/input.constants';
-
 import { IHearing, Hearing } from '../hearing.model';
 import { HearingService } from '../service/hearing.service';
 import { ICourtCase } from 'app/entities/court-case/court-case.model';
@@ -50,13 +47,6 @@ export class HearingUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ hearing }) => {
-      if (hearing.id === undefined) {
-        const today = dayjs().startOf('day');
-        hearing.hearingDate = today;
-        hearing.nextHearingDate = today;
-        hearing.previousHearingDate = today;
-      }
-
       this.updateForm(hearing);
 
       this.loadRelationshipsOptions();
@@ -103,10 +93,10 @@ export class HearingUpdateComponent implements OnInit {
   protected updateForm(hearing: IHearing): void {
     this.editForm.patchValue({
       id: hearing.id,
-      hearingDate: hearing.hearingDate ? hearing.hearingDate.format(DATE_TIME_FORMAT) : null,
-      nextHearingDate: hearing.nextHearingDate ? hearing.nextHearingDate.format(DATE_TIME_FORMAT) : null,
+      hearingDate: hearing.hearingDate,
+      nextHearingDate: hearing.nextHearingDate,
       description: hearing.description,
-      previousHearingDate: hearing.previousHearingDate ? hearing.previousHearingDate.format(DATE_TIME_FORMAT) : null,
+      previousHearingDate: hearing.previousHearingDate,
       conclusion: hearing.conclusion,
       comment: hearing.comment,
       status: hearing.status,
@@ -142,16 +132,10 @@ export class HearingUpdateComponent implements OnInit {
     return {
       ...new Hearing(),
       id: this.editForm.get(['id'])!.value,
-      hearingDate: this.editForm.get(['hearingDate'])!.value
-        ? dayjs(this.editForm.get(['hearingDate'])!.value, DATE_TIME_FORMAT)
-        : undefined,
-      nextHearingDate: this.editForm.get(['nextHearingDate'])!.value
-        ? dayjs(this.editForm.get(['nextHearingDate'])!.value, DATE_TIME_FORMAT)
-        : undefined,
+      hearingDate: this.editForm.get(['hearingDate'])!.value,
+      nextHearingDate: this.editForm.get(['nextHearingDate'])!.value,
       description: this.editForm.get(['description'])!.value,
-      previousHearingDate: this.editForm.get(['previousHearingDate'])!.value
-        ? dayjs(this.editForm.get(['previousHearingDate'])!.value, DATE_TIME_FORMAT)
-        : undefined,
+      previousHearingDate: this.editForm.get(['previousHearingDate'])!.value,
       conclusion: this.editForm.get(['conclusion'])!.value,
       comment: this.editForm.get(['comment'])!.value,
       status: this.editForm.get(['status'])!.value,

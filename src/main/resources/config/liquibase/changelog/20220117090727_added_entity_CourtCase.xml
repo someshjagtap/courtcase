@@ -47,7 +47,7 @@
             <column name="case_description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="case_filing_date" type="${datetimeType}">
+            <column name="case_filing_date" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="total_claim_amount" type="varchar(255)">
@@ -59,7 +59,7 @@
             <column name="caselawyer" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="next_hearing_date" type="${datetimeType}">
+            <column name="next_hearing_date" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="amount_deposite_in_court" type="varchar(255)">
@@ -77,7 +77,7 @@
             <column name="cheque_no" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="cheque_date" type="${datetimeType}">
+            <column name="cheque_date" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="appeal_no" type="varchar(255)">
@@ -89,7 +89,7 @@
             <column name="appeal_amount" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="appeal_date" type="${datetimeType}">
+            <column name="appeal_date" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="description" type="varchar(255)">
@@ -118,10 +118,6 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="court_case" columnName="case_filing_date" columnDataType="${datetimeType}"/>
-        <dropDefaultValue tableName="court_case" columnName="next_hearing_date" columnDataType="${datetimeType}"/>
-        <dropDefaultValue tableName="court_case" columnName="cheque_date" columnDataType="${datetimeType}"/>
-        <dropDefaultValue tableName="court_case" columnName="appeal_date" columnDataType="${datetimeType}"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -152,21 +148,21 @@
             <column name="court_name" type="string"/>
             <column name="defendant_name" type="string"/>
             <column name="case_description" type="string"/>
-            <column name="case_filing_date" type="date"/>
+            <column name="case_filing_date" type="string"/>
             <column name="total_claim_amount" type="string"/>
             <column name="case_officer" type="string"/>
             <column name="caselawyer" type="string"/>
-            <column name="next_hearing_date" type="date"/>
+            <column name="next_hearing_date" type="string"/>
             <column name="amount_deposite_in_court" type="string"/>
             <column name="lar" type="string"/>
             <column name="inc_compensation" type="string"/>
             <column name="amount_paid_slo" type="string"/>
             <column name="cheque_no" type="string"/>
-            <column name="cheque_date" type="date"/>
+            <column name="cheque_date" type="string"/>
             <column name="appeal_no" type="string"/>
             <column name="court_amount" type="string"/>
             <column name="appeal_amount" type="string"/>
-            <column name="appeal_date" type="date"/>
+            <column name="appeal_date" type="string"/>
             <column name="description" type="string"/>
             <column name="comment" type="string"/>
             <column name="case_status" type="string"/>

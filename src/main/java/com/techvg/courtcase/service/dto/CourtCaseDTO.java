@@ -1,7 +1,6 @@
 package com.techvg.courtcase.service.dto;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Objects;
 
 /**
@@ -33,7 +32,7 @@ public class CourtCaseDTO implements Serializable {
 
     private String caseDescription;
 
-    private Instant caseFilingDate;
+    private String caseFilingDate;
 
     private String totalClaimAmount;
 
@@ -41,7 +40,7 @@ public class CourtCaseDTO implements Serializable {
 
     private String caselawyer;
 
-    private Instant nextHearingDate;
+    private String nextHearingDate;
 
     private String amountDepositeInCourt;
 
@@ -53,7 +52,7 @@ public class CourtCaseDTO implements Serializable {
 
     private String chequeNo;
 
-    private Instant chequeDate;
+    private String chequeDate;
 
     private String appealNo;
 
@@ -61,7 +60,7 @@ public class CourtCaseDTO implements Serializable {
 
     private String appealAmount;
 
-    private Instant appealDate;
+    private String appealDate;
 
     private String description;
 
@@ -175,11 +174,11 @@ public class CourtCaseDTO implements Serializable {
         this.caseDescription = caseDescription;
     }
 
-    public Instant getCaseFilingDate() {
+    public String getCaseFilingDate() {
         return caseFilingDate;
     }
 
-    public void setCaseFilingDate(Instant caseFilingDate) {
+    public void setCaseFilingDate(String caseFilingDate) {
         this.caseFilingDate = caseFilingDate;
     }
 
@@ -207,11 +206,11 @@ public class CourtCaseDTO implements Serializable {
         this.caselawyer = caselawyer;
     }
 
-    public Instant getNextHearingDate() {
+    public String getNextHearingDate() {
         return nextHearingDate;
     }
 
-    public void setNextHearingDate(Instant nextHearingDate) {
+    public void setNextHearingDate(String nextHearingDate) {
         this.nextHearingDate = nextHearingDate;
     }
 
@@ -255,11 +254,11 @@ public class CourtCaseDTO implements Serializable {
         this.chequeNo = chequeNo;
     }
 
-    public Instant getChequeDate() {
+    public String getChequeDate() {
         return chequeDate;
     }
 
-    public void setChequeDate(Instant chequeDate) {
+    public void setChequeDate(String chequeDate) {
         this.chequeDate = chequeDate;
     }
 
@@ -287,11 +286,11 @@ public class CourtCaseDTO implements Serializable {
         this.appealAmount = appealAmount;
     }
 
-    public Instant getAppealDate() {
+    public String getAppealDate() {
         return appealDate;
     }
 
-    public void setAppealDate(Instant appealDate) {
+    public void setAppealDate(String appealDate) {
         this.appealDate = appealDate;
     }
 

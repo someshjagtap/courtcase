@@ -1,8 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import dayjs from 'dayjs/esm';
 
-import { DATE_TIME_FORMAT } from 'app/config/input.constants';
 import { IHearing, Hearing } from '../hearing.model';
 
 import { HearingService } from './hearing.service';
@@ -12,7 +10,6 @@ describe('Hearing Service', () => {
   let httpMock: HttpTestingController;
   let elemDefault: IHearing;
   let expectedResult: IHearing | IHearing[] | boolean | null;
-  let currentDate: dayjs.Dayjs;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -21,14 +18,13 @@ describe('Hearing Service', () => {
     expectedResult = null;
     service = TestBed.inject(HearingService);
     httpMock = TestBed.inject(HttpTestingController);
-    currentDate = dayjs();
 
     elemDefault = {
       id: 0,
-      hearingDate: currentDate,
-      nextHearingDate: currentDate,
+      hearingDate: 'AAAAAAA',
+      nextHearingDate: 'AAAAAAA',
       description: 'AAAAAAA',
-      previousHearingDate: currentDate,
+      previousHearingDate: 'AAAAAAA',
       conclusion: 'AAAAAAA',
       comment: 'AAAAAAA',
       status: 'AAAAAAA',
@@ -44,14 +40,7 @@ describe('Hearing Service', () => {
 
   describe('Service methods', () => {
     it('should find an element', () => {
-      const returnedFromService = Object.assign(
-        {
-          hearingDate: currentDate.format(DATE_TIME_FORMAT),
-          nextHearingDate: currentDate.format(DATE_TIME_FORMAT),
-          previousHearingDate: currentDate.format(DATE_TIME_FORMAT),
-        },
-        elemDefault
-      );
+      const returnedFromService = Object.assign({}, elemDefault);
 
       service.find(123).subscribe(resp => (expectedResult = resp.body));
 
@@ -64,21 +53,11 @@ describe('Hearing Service', () => {
       const returnedFromService = Object.assign(
         {
           id: 0,
-          hearingDate: currentDate.format(DATE_TIME_FORMAT),
-          nextHearingDate: currentDate.format(DATE_TIME_FORMAT),
-          previousHearingDate: currentDate.format(DATE_TIME_FORMAT),
         },
         elemDefault
       );
 
-      const expected = Object.assign(
-        {
-          hearingDate: currentDate,
-          nextHearingDate: currentDate,
-          previousHearingDate: currentDate,
-        },
-        returnedFromService
-      );
+      const expected = Object.assign({}, returnedFromService);
 
       service.create(new Hearing()).subscribe(resp => (expectedResult = resp.body));
 
@@ -91,10 +70,10 @@ describe('Hearing Service', () => {
       const returnedFromService = Object.assign(
         {
           id: 1,
-          hearingDate: currentDate.format(DATE_TIME_FORMAT),
-          nextHearingDate: currentDate.format(DATE_TIME_FORMAT),
+          hearingDate: 'BBBBBB',
+          nextHearingDate: 'BBBBBB',
           description: 'BBBBBB',
-          previousHearingDate: currentDate.format(DATE_TIME_FORMAT),
+          previousHearingDate: 'BBBBBB',
           conclusion: 'BBBBBB',
           comment: 'BBBBBB',
           status: 'BBBBBB',
@@ -109,14 +88,7 @@ describe('Hearing Service', () => {
         elemDefault
       );
 
-      const expected = Object.assign(
-        {
-          hearingDate: currentDate,
-          nextHearingDate: currentDate,
-          previousHearingDate: currentDate,
-        },
-        returnedFromService
-      );
+      const expected = Object.assign({}, returnedFromService);
 
       service.update(expected).subscribe(resp => (expectedResult = resp.body));
 
@@ -128,7 +100,7 @@ describe('Hearing Service', () => {
     it('should partial update a Hearing', () => {
       const patchObject = Object.assign(
         {
-          nextHearingDate: currentDate.format(DATE_TIME_FORMAT),
+          nextHearingDate: 'BBBBBB',
           comment: 'BBBBBB',
           status: 'BBBBBB',
           freefield3: 'BBBBBB',
@@ -140,14 +112,7 @@ describe('Hearing Service', () => {
 
       const returnedFromService = Object.assign(patchObject, elemDefault);
 
-      const expected = Object.assign(
-        {
-          hearingDate: currentDate,
-          nextHearingDate: currentDate,
-          previousHearingDate: currentDate,
-        },
-        returnedFromService
-      );
+      const expected = Object.assign({}, returnedFromService);
 
       service.partialUpdate(patchObject).subscribe(resp => (expectedResult = resp.body));
 
@@ -160,10 +125,10 @@ describe('Hearing Service', () => {
       const returnedFromService = Object.assign(
         {
           id: 1,
-          hearingDate: currentDate.format(DATE_TIME_FORMAT),
-          nextHearingDate: currentDate.format(DATE_TIME_FORMAT),
+          hearingDate: 'BBBBBB',
+          nextHearingDate: 'BBBBBB',
           description: 'BBBBBB',
-          previousHearingDate: currentDate.format(DATE_TIME_FORMAT),
+          previousHearingDate: 'BBBBBB',
           conclusion: 'BBBBBB',
           comment: 'BBBBBB',
           status: 'BBBBBB',
@@ -178,14 +143,7 @@ describe('Hearing Service', () => {
         elemDefault
       );
 
-      const expected = Object.assign(
-        {
-          hearingDate: currentDate,
-          nextHearingDate: currentDate,
-          previousHearingDate: currentDate,
-        },
-        returnedFromService
-      );
+      const expected = Object.assign({}, returnedFromService);
 
       service.query().subscribe(resp => (expectedResult = resp.body));
 
